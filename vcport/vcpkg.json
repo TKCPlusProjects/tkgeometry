@@ -2,7 +2,7 @@
   "name": "tkgeometry",
   "version": "0.1.3",
   "description": "The tkgeometry is a port of vcpkg",
-  "homepage": "https://github.com/ZhengXianda/tkgeometry",
+  "homepage": "https://github.com/TKCPlusProjects/tkgeometry",
   "dependencies": [
     {
       "name": "tkutils",
