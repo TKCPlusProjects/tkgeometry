@@ -16,3 +16,6 @@ target_include_directories(
     $<BUILD_INTERFACE:${PROJECT_BASE_INCLUDE}>
     $<INSTALL_INTERFACE:include>
 )
+
+find_package(tkutils CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE tkutils::tkutils)

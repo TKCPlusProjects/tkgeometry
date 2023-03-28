@@ -1,6 +1,8 @@
 # 本项目构件所须的CMake最低版本号
 cmake_minimum_required (VERSION 3.5)
 
+set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
+
 # 配置项目信息
 project(
   tkgeometry # 项目名，会被保存到 PROJECT_NAME 变量
