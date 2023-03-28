@@ -36,9 +36,9 @@
 #  vcpkg_from_bitbucket
 #  vcpkg_from_sourceforge
 vcpkg_download_distfile(ARCHIVE
-    URLS "https://github.com/ZhengXianda/tkgeometry/releases/download/0.1.0/tkgeometry-0.1.0.zip"
-    FILENAME "tkgeometry-0.1.0.zip"
-    SHA512 0
+    URLS "https://github.com/ZhengXianda/tkgeometry/releases/download/0.1.1/tkgeometry-0.1.1.zip"
+    FILENAME "tkgeometry-0.1.1.zip"
+    SHA512 3ad2c8ac04352268d0de787fbd4666d12de31ebd3bd0d39a296d90217b6b15d55cf97fc64a671353971acc053c13909f6617c398f4dc0eb9370bc1e1b886443c
 )
 
 vcpkg_extract_source_archive_ex(
