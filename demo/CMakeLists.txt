@@ -13,5 +13,14 @@ set_target_properties(
   CXX_STANDARD 17
 )
 
+find_package(tkutils CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE tkutils::tkutils)
+
 find_package(tkgeometry CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE tkgeometry::tkgeometry)
+
+find_package(GLEW REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE GLEW::GLEW)
+
+find_package(glfw3 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
