@@ -1,6 +1,6 @@
 {
   "name": "tkgeometry",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The tkgeometry is a port of vcpkg",
   "homepage": "https://github.com/TKCPlusProjects/tkgeometry",
   "dependencies": [
