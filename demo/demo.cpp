@@ -79,6 +79,43 @@ void drawVoronoi (GLFWwindow* window, int count) {
   }
 }
 
+void drawPolygon (GLFWwindow* window) {
+  int _width;
+  int _height;
+  glfwGetWindowSize(window, &_width, &_height);
+  
+  if (width == _width && height == _height) {
+    
+  } else {
+    width = _width;
+    height = _height;
+
+    //计算数据
+    vector<Vertex> vertex_list = {
+      Vertex(0.0f, 0.0f),
+      Vertex(width - 2*margin, 0.0f),
+      Vertex(width - 2*margin, height - 2*margin),
+      Vertex(0.0f, height - 2*margin),
+    };
+    Polygon polygon = Polygon(vertex_list);
+
+    //清空窗口
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    //绘制边框
+    glColor3d(0.0f, 0.0f, 0.0f);
+    glLineWidth(1.0f);
+    glBegin(GL_LINE_LOOP);
+    for (Vertex vertex: polygon.vertex_list)
+    {
+      vertex2d(vertex.x, vertex.y);
+    }
+    glEnd();
+
+    glfwSwapBuffers(window);
+  }
+}
+
 int main() {
   if (!glfwInit()) {
     return -1;
@@ -97,7 +134,7 @@ int main() {
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
-    drawVoronoi(window, 50);
+    drawPolygon(window);
   }
 
   glfwTerminate();
