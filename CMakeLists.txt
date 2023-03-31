@@ -31,3 +31,7 @@ install(
 )
 
 add_subdirectory(lib)
+
+if(BUILD_DEMO)
+  add_subdirectory(demo)
+endif()
