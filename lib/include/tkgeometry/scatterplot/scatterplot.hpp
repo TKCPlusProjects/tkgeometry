@@ -30,7 +30,7 @@ public:
 
     ~Scatterplot();
     Scatterplot();
-    Scatterplot(Rectangle canvas, double density);
+    Scatterplot(Rectangle canvas, int count);
 };
 
 }

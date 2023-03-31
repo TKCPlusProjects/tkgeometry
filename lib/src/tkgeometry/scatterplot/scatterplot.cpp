@@ -14,9 +14,9 @@ using namespace std;
 namespace tkht {
 
 class Scatterplot::Impl {
-    
+
 public:
-    
+
 };
 
 Scatterplot::~Scatterplot() = default;
@@ -25,8 +25,8 @@ Scatterplot::Scatterplot() {
     Scatterplot(Rectangle(), 0);
 }
 
-Scatterplot::Scatterplot(Rectangle canvas, double density) {
-    double density_scale = sqrt(canvas.width * canvas.height / density);
+Scatterplot::Scatterplot(Rectangle canvas, int count) {
+    double density_scale = sqrt(canvas.width * canvas.height / count);
     //水平分布数量和间隔
     int density_h = floor(canvas.width / density_scale);
     double space_h = canvas.width / density_h;

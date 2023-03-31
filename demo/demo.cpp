@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-double density = 50;
+int count = 200;
 int margin = 50;
 int width, height = 0;
 
@@ -45,7 +45,7 @@ int main() {
 
       //计算数据
       Rectangle canvas = Rectangle(width - 2*margin, height - 2*margin);
-      Scatterplot scatterplot = Scatterplot(canvas, density);
+      Scatterplot scatterplot = Scatterplot(canvas, count);
       Delaunay delaunay = Delaunay(canvas, scatterplot.vertex_list);
       Voronoi voronoi = Voronoi(canvas, delaunay.triangle_list);
 
