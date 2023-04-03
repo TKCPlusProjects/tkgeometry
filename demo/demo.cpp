@@ -37,7 +37,7 @@ void drawVoronoi (GLFWwindow* window, int count) {
 
     //绘制边框
     glColor3d(0.0f, 0.0f, 0.0f);
-    glLineWidth(1.0f);
+    glLineWidth(5.0f);
     glBegin(GL_LINE_LOOP);
     vertex2d(0.0f, 0.0f);
     vertex2d(canvas.width, 0.0f);
@@ -47,7 +47,7 @@ void drawVoronoi (GLFWwindow* window, int count) {
 
     //绘制顶点
     glColor3d(0.0f, 1.0f, 0.0f);
-    glPointSize(5.0f);
+    glPointSize(15.0f);
     glBegin(GL_POINTS);
     for (Vertex vertex : scatterplot.vertex_list) {
       vertex2d(vertex.x, vertex.y);
@@ -57,7 +57,7 @@ void drawVoronoi (GLFWwindow* window, int count) {
     //绘制三角形
     for (Triangle triangle : delaunay.triangle_list) {
       glColor3d(0.0f, 1.0f, 0.0f);
-      glLineWidth(1.0f);
+      glLineWidth(5.0f);
       glBegin(GL_LINE_LOOP);
       vertex2d(triangle.o.x, triangle.o.y);
       vertex2d(triangle.p.x, triangle.p.y);
@@ -67,7 +67,7 @@ void drawVoronoi (GLFWwindow* window, int count) {
 
     //绘制三角形外心连线
     glColor3d(1.0f, 0.0f, 0.0f);
-    glLineWidth(1.0f);
+    glLineWidth(5.0f);
     glBegin(GL_LINES);
     for (Line line : voronoi.line_list) {
       vertex2d(line.o.x, line.o.y);
@@ -91,7 +91,7 @@ void drawPolygon (GLFWwindow* window) {
     height = _height;
 
     //计算数据
-    vector<Vertex> vertex_list = {
+    TKArray<Vertex> vertex_list {
       Vertex(0.0f, 0.0f),
       Vertex(width - 2*margin, 0.0f),
       Vertex(width - 2*margin, height - 2*margin),
@@ -104,7 +104,7 @@ void drawPolygon (GLFWwindow* window) {
 
     //绘制边框
     glColor3d(0.0f, 0.0f, 0.0f);
-    glLineWidth(1.0f);
+    glLineWidth(5.0f);
     glBegin(GL_LINE_LOOP);
     for (Vertex vertex: polygon.vertex_list)
     {
@@ -134,7 +134,8 @@ int main() {
   while (!glfwWindowShouldClose(window)) {
     glfwPollEvents();
 
-    drawPolygon(window);
+    drawVoronoi(window, 50);
+    // drawPolygon(window);
   }
 
   glfwTerminate();
