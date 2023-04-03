@@ -8,9 +8,7 @@
 #ifndef triangle_hpp
 #define triangle_hpp
 
-#include <stdio.h>
-
-#include <tkutils/tkutils.hpp>
+#include <tkgeometry/base/fgg.hpp>
 #include <tkgeometry/base/vertex.hpp>
 #include <tkgeometry/base/line.hpp>
 #include <tkgeometry/base/circle.hpp>
@@ -19,7 +17,7 @@ using namespace std;
 
 namespace tkht {
 
-class Triangle {
+class Triangle : public FGG {
     
 private:
     
@@ -29,19 +27,18 @@ private:
 public:
 
     Vertex o, p, q;
-    TKList<Vertex> vertexs;
+    TKArray<Vertex> vertexs;
     
     Line op, oq, pq;
-    TKList<Line> lines;
+    TKArray<Line> lines;
     
     Circle circumcircle;
     
-    ~Triangle();
     Triangle();
     Triangle(Vertex x, Vertex y, Vertex z);
     
-    bool operator==(const Triangle& __v);
-    bool operator!=(const Triangle& __v);
+    bool operator==(const Triangle& __v) const;
+    bool operator!=(const Triangle& __v) const;
     
     bool contain_vertex(Vertex vertex);
     bool contain_line(Line line);

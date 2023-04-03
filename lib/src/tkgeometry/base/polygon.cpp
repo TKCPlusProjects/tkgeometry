@@ -18,20 +18,12 @@ namespace tkht
   public:
   };
 
-  Polygon::~Polygon() = default;
-
-  Polygon::Polygon() : impl(new Polygon::Impl())
-  {
-    vector<Vertex> point_list;
-    init(point_list);
-  }
-
-  Polygon::Polygon(vector<Vertex> point_list) : impl(new Polygon::Impl())
+  Polygon::Polygon(TKArray<Vertex> point_list) : impl(new Polygon::Impl())
   {
     init(point_list);
   }
 
-  void Polygon::init(vector<Vertex> point_list)
+  void Polygon::init(TKArray<Vertex> point_list)
   {
     vertex_list = point_list;
 
@@ -39,7 +31,7 @@ namespace tkht
     for (int i = 0, j = vertex_count - 1; i < vertex_count; j = i++)
     {
       Line side = Line(vertex_list[i], vertex_list[j]);
-      side_list.push_back(side);
+      side_list.push(side);
     }
   }
 

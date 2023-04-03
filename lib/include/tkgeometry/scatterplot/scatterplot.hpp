@@ -8,9 +8,6 @@
 #ifndef scatterplot_hpp
 #define scatterplot_hpp
 
-#include <stdio.h>
-
-#include <tkutils/tkutils.hpp>
 #include <tkgeometry/base/rectangle.hpp>
 
 using namespace std;
@@ -26,7 +23,7 @@ private:
     
 public:
     
-    TKList<Vertex> vertex_list; //顶点列表
+    TKArray<Vertex> vertex_list; //顶点列表
 
     ~Scatterplot();
     Scatterplot();

@@ -8,8 +8,6 @@
 #ifndef voronoi_hpp
 #define voronoi_hpp
 
-#include <stdio.h>
-
 #include <tkgeometry/base/line.hpp>
 #include <tkgeometry/base/triangle.hpp>
 #include <tkgeometry/base/rectangle.hpp>
@@ -27,11 +25,11 @@ private:
     
 public:
     
-    TKList<Line> line_list; //外心连线列表
+    TKArray<Line> line_list; //外心连线列表
     
     ~Voronoi();
     Voronoi();
-    Voronoi(Rectangle canvas, TKList<Triangle> triangle_list);
+    Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list);
 };
 
 }

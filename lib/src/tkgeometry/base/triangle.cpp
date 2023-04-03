@@ -7,8 +7,6 @@
 
 #include <tkgeometry/base/triangle.hpp>
 
-#include <vector>
-
 using namespace std;
 
 namespace tkht {
@@ -19,29 +17,31 @@ public:
     
 };
 
-Triangle::~Triangle() = default;
-
 Triangle::Triangle() : impl(new Triangle::Impl())  {
     Triangle(Vertex(), Vertex(), Vertex());
 }
 
 Triangle::Triangle(Vertex x, Vertex y, Vertex z) : impl(new Triangle::Impl()) {
-    vector<Vertex> line{x, y, z};
-    sort(line.begin(), line.end(), Vertex::les);
+    TKArray<Vertex> line{x, y, z};
+    line.sort(Vertex::les);
     o = line[0]; p = line[1]; q = line[2];
-    vertexs = {o, p, q};
+    vertexs.push(o);
+    vertexs.push(p);
+    vertexs.push(q);
     
     op = Line(o, p);oq = Line(o, q);pq = Line(p, q);
-    lines = {Line(o, p), Line(o, q), Line(p, q)};
+    lines.push(op);
+    lines.push(oq);
+    lines.push(pq);
     
     circumcircle = Circle(o, p, q);
 }
 
-bool Triangle::operator==(const Triangle& __v) {
+bool Triangle::operator==(const Triangle& __v) const {
     return (o == __v.o && p == __v.p && q == __v.q);
 }
 
-bool Triangle::operator!=(const Triangle& __v) {
+bool Triangle::operator!=(const Triangle& __v) const {
     return (o != __v.o || p != __v.p || q != __v.q);
 }
 

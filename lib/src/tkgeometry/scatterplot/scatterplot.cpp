@@ -38,7 +38,7 @@ Scatterplot::Scatterplot(Rectangle canvas, int count) {
         for (int space_y = 0; space_y < density_v; space_y ++) {
             int x = fmod(rand(), space_h)+space_x*space_h;
             int y = fmod(rand(), space_v)+space_y*space_v;
-            vertex_list.push_back(Vertex(x, y));
+            vertex_list.push(Vertex(x, y));
         }
     }
 }

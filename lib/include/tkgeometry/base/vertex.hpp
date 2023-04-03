@@ -8,13 +8,13 @@
 #ifndef vertex_hpp
 #define vertex_hpp
 
-#include <stdio.h>
+#include <tkgeometry/base/fgg.hpp>
 
 using namespace std;
 
 namespace tkht {
 
-class Vertex {
+class Vertex : public FGG {
     
 private:
     
@@ -26,14 +26,13 @@ public:
     double x;
     double y;
     
-    ~Vertex();
     Vertex();
     Vertex(double x, double y);
     
-    bool operator==(const Vertex& __v);
-    bool operator!=(const Vertex& __v);
+    bool operator==(const Vertex& __v) const;;
+    bool operator!=(const Vertex& __v) const;
     double operator*(const Vertex& __v);
-    
+
     static bool les (const Vertex& __v1, const Vertex& __v2);
 };
 

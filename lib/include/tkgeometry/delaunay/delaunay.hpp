@@ -8,8 +8,6 @@
 #ifndef delaunay_hpp
 #define delaunay_hpp
 
-#include <stdio.h>
-
 #include <tkgeometry/base/triangle.hpp>
 #include <tkgeometry/base/rectangle.hpp>
 
@@ -28,11 +26,11 @@ private:
     
 public:
     
-    TKList<Triangle> triangle_list; //三角形列表
+    TKArray<Triangle> triangle_list; //三角形列表
     
     ~Delaunay();
     Delaunay();
-    Delaunay(Rectangle canvas, TKList<Vertex> vertex_list);
+    Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list);
 };
 
 }

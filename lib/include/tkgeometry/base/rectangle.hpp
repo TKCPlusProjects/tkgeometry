@@ -8,8 +8,7 @@
 #ifndef rectangle_hpp
 #define rectangle_hpp
 
-#include <stdio.h>
-
+#include <tkgeometry/base/fgg.hpp>
 #include <tkgeometry/base/vertex.hpp>
 #include <tkgeometry/base/line.hpp>
 
@@ -17,7 +16,7 @@ using namespace std;
 
 namespace tkht {
 
-class Rectangle {
+class Rectangle : public FGG {
     
 private:
     
@@ -29,13 +28,12 @@ public:
     double width, height;
     Vertex o, p;
     
-    ~Rectangle();
     Rectangle();
     Rectangle(double w, double h);
     Rectangle(Vertex x, Vertex y);
     
     bool contain(Vertex vertex);
-    vector<Vertex> crosses(Line line);
+    TKArray<Vertex> crosses(Line line);
 };
 
 }

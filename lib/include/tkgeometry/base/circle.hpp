@@ -8,15 +8,14 @@
 #ifndef circle_hpp
 #define circle_hpp
 
-#include <stdio.h>
-
+#include <tkgeometry/base/fgg.hpp>
 #include <tkgeometry/base/vertex.hpp>
 
 using namespace std;
 
 namespace tkht {
 
-class Circle {
+class Circle : public FGG {
     
 private:
     
@@ -28,7 +27,6 @@ public:
     Vertex o;
     double r;
     
-    ~Circle();
     Circle();
     Circle(Vertex o, double r);
     Circle(Vertex left, Vertex mid, Vertex right);

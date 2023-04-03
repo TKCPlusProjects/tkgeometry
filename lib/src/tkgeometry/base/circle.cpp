@@ -17,8 +17,6 @@ public:
     
 };
 
-Circle::~Circle() = default;
-
 Circle::Circle() : impl(new Circle::Impl()) {
     Circle(Vertex(), 0);
 }

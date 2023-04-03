@@ -8,6 +8,7 @@
 #include <tkgeometry/base/vertex.hpp>
 
 #include <stdlib.h>
+#include <math.h>
 
 using namespace std;
 
@@ -19,8 +20,6 @@ public:
     
 };
 
-Vertex::~Vertex() = default;
-
 Vertex::Vertex() : impl(new Vertex::Impl()) {
     Vertex(0, 0);
 }
@@ -30,11 +29,11 @@ Vertex::Vertex(double x, double y) : impl(new Vertex::Impl()) {
     this->y = y;
 }
 
-bool Vertex::operator==(const Vertex& __v) {
+bool Vertex::operator==(const Vertex& __v) const {
     return abs(x - __v.x) < 0.01 && abs(y - __v.y) < 0.01;
 }
 
-bool Vertex::operator!=(const Vertex& __v) {
+bool Vertex::operator!=(const Vertex& __v) const {
     return abs(x - __v.x) > 0.01 && abs(y - __v.y) > 0.01;
 }
 

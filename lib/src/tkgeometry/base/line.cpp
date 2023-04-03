@@ -7,7 +7,6 @@
 
 #include <tkgeometry/base/line.hpp>
 
-#include <vector>
 #include <math.h>
 
 using namespace std;
@@ -20,35 +19,28 @@ public:
     
 };
 
-Line::~Line() = default;
-
 Line::Line() : impl(new Line::Impl()) {
     Line(Vertex(), Vertex());
 }
 
 Line::Line(Vertex x, Vertex y) : impl(new Line::Impl()) {
-    vector<Vertex> line{x, y};
-    sort(line.begin(), line.end(), Vertex::les);
+    TKArray<Vertex> line{x, y};
+    line.sort(Vertex::les);
     o = line[0]; p = line[1];
-    vertexs = {o, p};
+    vertexs.push(o);
+    vertexs.push(p);
     
     a = p.y - o.y;
     b = o.x - p.x;
     c = p.x * o.y - o.x * p.y;
 }
 
-bool Line::operator==(const Line& __v) {
+bool Line::operator==(const Line& __v) const {
     return (o == __v.o && p == __v.p);
 }
 
 Vertex Line::middle() {
     return Vertex((o.x + p.x)/2.0, (o.y + p.y)/2.0);
-}
-
-Vertex Line::intersection(Line line) {
-    double x = (b * line.c - c * line.b) / (a * line.b - b * line.a);
-    double y = location_y(x);
-    return Vertex(x, y);
 }
 
 double Line::substitute(Vertex t) {
@@ -73,6 +65,12 @@ double Line::location_y(double x) {
         y = - (c + a*x) / b;
     }
     return y;
+}
+
+Vertex Line::intersection(Line line) {
+    double x = (b * line.c - c * line.b) / (a * line.b - b * line.a);
+    double y = location_y(x);
+    return Vertex(x, y);
 }
 
 }

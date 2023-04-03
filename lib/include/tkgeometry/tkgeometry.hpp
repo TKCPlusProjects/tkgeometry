@@ -1,8 +1,7 @@
 #ifndef tkgeometry_hpp
 #define tkgeometry_hpp
 
-#include <stdio.h>
-
+#include <tkgeometry/base/fgg.hpp>
 #include <tkgeometry/base/vertex.hpp>
 #include <tkgeometry/base/line.hpp>
 #include <tkgeometry/base/polygon.hpp>
