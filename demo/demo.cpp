@@ -1,6 +1,6 @@
-#include <tkgeometry/tkgeometry.hpp>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <tkgeometry/tkgeometry.hpp>
 
 #include <iostream>
 
@@ -11,49 +11,50 @@ int width, height = 0;
 
 int margin = 50;
 
-void vertex2d (GLdouble x, GLdouble y) {
-  glVertex2d((x + margin)/width * 2.0f - 1.0f, (y + margin)/height * 2.0f - 1.0f);
+void vertex2d(GLdouble x, GLdouble y) {
+  glVertex2d((x + margin) / width * 2.0f - 1.0f,
+             (y + margin) / height * 2.0f - 1.0f);
 }
 
-void drawVoronoi (GLFWwindow* window, int count) {
+void drawVoronoi(GLFWwindow *window, int count) {
   int _width;
   int _height;
   glfwGetWindowSize(window, &_width, &_height);
-  
+
   if (width == _width && height == _height) {
-    
+
   } else {
     width = _width;
     height = _height;
 
-    //计算数据
-    Rectangle canvas = Rectangle(width - 2*margin, height - 2*margin);
+    // 计算数据
+    Rectangle canvas = Rectangle(width - 2 * margin, height - 2 * margin);
     Scatterplot scatterplot = Scatterplot(canvas, count);
     Delaunay delaunay = Delaunay(canvas, scatterplot.vertex_list);
     Voronoi voronoi = Voronoi(canvas, delaunay.triangle_list);
 
-    //清空窗口
+    // 清空窗口
     glClear(GL_COLOR_BUFFER_BIT);
 
-    //绘制边框
+    // 绘制边框
     glColor3d(0.0f, 0.0f, 0.0f);
     glLineWidth(5.0f);
     glBegin(GL_LINE_LOOP);
-    for (Vertex vertex : canvas.vertex_list) {
+    for (Point vertex : canvas.vertex_list) {
       vertex2d(vertex.x, vertex.y);
     }
     glEnd();
 
-    //绘制顶点
+    // 绘制顶点
     glColor3d(0.0f, 1.0f, 0.0f);
     glPointSize(15.0f);
     glBegin(GL_POINTS);
-    for (Vertex vertex : scatterplot.vertex_list) {
+    for (Point vertex : scatterplot.vertex_list) {
       vertex2d(vertex.x, vertex.y);
     }
     glEnd();
 
-    //绘制三角形
+    // 绘制三角形
     for (Triangle triangle : delaunay.triangle_list) {
       glColor3d(0.0f, 1.0f, 0.0f);
       glLineWidth(5.0f);
@@ -64,7 +65,7 @@ void drawVoronoi (GLFWwindow* window, int count) {
       glEnd();
     }
 
-    //绘制三角形外心连线
+    // 绘制三角形外心连线
     glColor3d(1.0f, 0.0f, 0.0f);
     glLineWidth(5.0f);
     glBegin(GL_LINES);
@@ -78,34 +79,33 @@ void drawVoronoi (GLFWwindow* window, int count) {
   }
 }
 
-void drawPolygon (GLFWwindow* window) {
+void drawPolygon(GLFWwindow *window) {
   int _width;
   int _height;
   glfwGetWindowSize(window, &_width, &_height);
-  
+
   if (width == _width && height == _height) {
-    
+
   } else {
     width = _width;
     height = _height;
 
-    //计算数据
-    Polygon polygon {
-      Vertex(0.0f, 0.0f),
-      Vertex(width - 2*margin, 0.0f),
-      Vertex(width - 2*margin, height - 2*margin),
-      Vertex(0.0f, height - 2*margin),
+    // 计算数据
+    Polygon polygon{
+        Point(0.0f, 0.0f),
+        Point(width - 2 * margin, 0.0f),
+        Point(width - 2 * margin, height - 2 * margin),
+        Point(0.0f, height - 2 * margin),
     };
 
-    //清空窗口
+    // 清空窗口
     glClear(GL_COLOR_BUFFER_BIT);
 
-    //绘制边框
+    // 绘制边框
     glColor3d(0.0f, 0.0f, 0.0f);
     glLineWidth(5.0f);
     glBegin(GL_LINE_LOOP);
-    for (Vertex vertex: polygon.vertex_list)
-    {
+    for (Point vertex : polygon.vertex_list) {
       vertex2d(vertex.x, vertex.y);
     }
     glEnd();
@@ -120,7 +120,8 @@ int main() {
   }
 
   glfwWindowHint(GLFW_CLIENT_API | GLFW_SRGB_CAPABLE, GLFW_NO_API);
-  GLFWwindow* window = glfwCreateWindow(800, 600, "tkgeometry demo", NULL, NULL);
+  GLFWwindow *window =
+      glfwCreateWindow(800, 600, "tkgeometry demo", NULL, NULL);
   if (!window) {
     glfwTerminate();
     return -1;

@@ -1,6 +1,6 @@
 //
 //  polygon.cpp
-//  TKVoronoi
+//  tkgeometry
 //
 //  Created by ZhengXianda on 2022/8/25.
 //
@@ -9,83 +9,65 @@
 
 using namespace std;
 
-namespace tkht
-{
+namespace tkht {
 
-  class Polygon::Impl
-  {
+class Polygon::Impl {
 
-  public:
-  };
+public:
+};
 
-  Polygon::Polygon() : FGG()
-  {
-  }
+Polygon::Polygon() : FGG() {}
 
-  Polygon::Polygon(initializer_list<Vertex> point_list) : FGG(), vertex_list(point_list)
-  {
-    connect();
-  }
+Polygon::Polygon(initializer_list<Point> point_list)
+    : FGG(), vertex_list(point_list) {
+  connect();
+}
 
-  bool Polygon::operator==(const Polygon &__v) const
-  {
-    bool equal = false;
+bool Polygon::operator==(const Polygon &__v) const {
+  bool equal = false;
 
-    int size = vertex_list.size();
-    int __size = __v.vertex_list.size();
-    if (size != __size)
-      return equal;
-
-    equal = true;
-    TKArray<Vertex> array = vertex_list.sorted(Vertex::les);
-    TKArray<Vertex> __array = __v.vertex_list.sorted(Vertex::les);
-    for (size_t i = 0; i < min(size, __size); i++)
-    {
-      equal &= array[i] == __array[i];
-      if (!equal)
-        break;
-    }
-
+  int size = vertex_list.size();
+  int __size = __v.vertex_list.size();
+  if (size != __size)
     return equal;
+
+  equal = true;
+  TKArray<Point> array = vertex_list.sorted(Point::les);
+  TKArray<Point> __array = __v.vertex_list.sorted(Point::les);
+  for (size_t i = 0; i < min(size, __size); i++) {
+    equal &= array[i] == __array[i];
+    if (!equal)
+      break;
   }
 
-  bool Polygon::operator!=(const Polygon &__v) const
-  {
-    return !operator==(__v);
-  }
+  return equal;
+}
 
-  void Polygon::push(Vertex point)
-  {
-    vertex_list += point;
-  }
+bool Polygon::operator!=(const Polygon &__v) const { return !operator==(__v); }
 
-  void Polygon::push(TKArray<Vertex> point_list)
-  {
-    vertex_list += point_list;
-  }
+void Polygon::push(Point vertex) { vertex_list += vertex; }
 
-  void Polygon::connect()
-  {
-    side_list.clear();
-    int vertex_count = vertex_list.size();
-    for (int i = 0, j = vertex_count - 1; i < vertex_count; j = i++)
-    {
-      Line side = Line(vertex_list[i], vertex_list[j]);
-      side_list.push(side);
-    }
-  }
+void Polygon::push(TKArray<Point> vertex_list) { vertex_list += vertex_list; }
 
-  bool Polygon::containment(Vertex point)
-  {
-    bool inside = false;
-    for (Line side : side_list)
-    {
-      if (((side.o.y > point.y) != (side.p.y > point.y)) &&
-          (point.x < ((side.p.x - side.o.x) * (point.y - side.o.y) / (side.p.y - side.o.y) + side.o.x)))
-      {
-        inside = !inside;
-      }
-    }
-    return inside;
+void Polygon::connect() {
+  side_list.clear();
+  int vertex_count = vertex_list.size();
+  for (int i = 0, j = vertex_count - 1; i < vertex_count; j = i++) {
+    Line side = Line(vertex_list[i], vertex_list[j]);
+    side_list.push(side);
   }
 }
+
+bool Polygon::contain(Point point) {
+  bool inside = false;
+  for (Line side : side_list) {
+    if (((side.o.y > point.y) != (side.p.y > point.y)) &&
+        (point.x <
+         ((side.p.x - side.o.x) * (point.y - side.o.y) / (side.p.y - side.o.y) +
+          side.o.x))) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+} // namespace tkht

@@ -14,24 +14,22 @@
 
 using namespace std;
 
-namespace tkht
-{
+namespace tkht {
 
-  class FGG
-  {
+class FGG {
 
-  private:
-    class Impl;
-    Impl *impl;
+private:
+  class Impl;
+  Impl *impl;
 
-  public:
-    ~FGG();
-    FGG();
+public:
+  ~FGG();
+  FGG();
 
-    bool operator==(const FGG &__v) const;
-    bool operator!=(const FGG &__v) const;
-    bool operator<(const FGG &__v) const;
-  };
-}
+  bool operator==(const FGG &__v) const;
+  bool operator!=(const FGG &__v) const;
+  bool operator<(const FGG &__v) const;
+};
+} // namespace tkht
 
 #endif /* shape_hpp */

@@ -1,6 +1,6 @@
 //
 //  circle.hpp
-//  TKVoronoi
+//  tkgeometry
 //
 //  Created by ZhengXianda on 2022/8/31.
 //
@@ -9,31 +9,32 @@
 #define circle_hpp
 
 #include <tkgeometry/base/fgg.hpp>
-#include <tkgeometry/base/vertex.hpp>
+#include <tkgeometry/base/point.hpp>
 
 using namespace std;
 
 namespace tkht {
 
 class Circle : public FGG {
-    
+
 private:
-    
-    class Impl;
-    Impl *impl;
-    
+  class Impl;
+  Impl *impl;
+
 public:
-    
-    Vertex o;
-    double r;
-    
-    Circle();
-    Circle(Vertex o, double r);
-    Circle(Vertex left, Vertex mid, Vertex right);
-    
-    bool contain(Vertex vertex);
+  /// @brief 圆心
+  Point o;
+  /// @brief 半径
+  double r;
+
+  Circle();
+  Circle(Point o, double r);
+  Circle(Point left, Point mid, Point right);
+
+  /// @brief 点是否在圆内
+  bool contain(Point point);
 };
 
-}
+} // namespace tkht
 
 #endif /* circle_hpp */

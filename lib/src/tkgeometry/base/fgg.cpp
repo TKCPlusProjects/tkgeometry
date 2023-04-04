@@ -9,28 +9,16 @@
 
 using namespace std;
 
-namespace tkht
-{
+namespace tkht {
 
-  class FGG::Impl
-  {
-  };
+class FGG::Impl {};
 
-  FGG::~FGG() = default;
-  FGG::FGG() = default;
+FGG::~FGG() = default;
+FGG::FGG() = default;
 
-  bool FGG::operator==(const FGG &__v) const
-  {
-    return false;
-  }
+bool FGG::operator==(const FGG &__v) const { return false; }
 
-  bool FGG::operator!=(const FGG &__v) const
-  {
-    return true;
-  }
+bool FGG::operator!=(const FGG &__v) const { return true; }
 
-  bool FGG::operator<(const FGG &__v) const
-  {
-    return true;
-  }
-}
+bool FGG::operator<(const FGG &__v) const { return true; }
+} // namespace tkht

@@ -9,35 +9,37 @@
 #define polygon_hpp
 
 #include <tkgeometry/base/fgg.hpp>
-#include <tkgeometry/base/vertex.hpp>
 #include <tkgeometry/base/line.hpp>
+#include <tkgeometry/base/point.hpp>
 
 using namespace std;
 
-namespace tkht
-{
-  class Polygon : public FGG
-  {
-  private:
-    class Impl;
-    Impl *impl;
+namespace tkht {
+class Polygon : public FGG {
+private:
+  class Impl;
+  Impl *impl;
 
-  public:
-    TKArray<Vertex> vertex_list;
-    TKArray<Line> side_list;
+public:
+  /// @brief 顶点列表
+  TKArray<Point> vertex_list;
+  /// @brief 边列表
+  TKArray<Line> side_list;
 
-    Polygon();
-    Polygon(initializer_list<Vertex> point_list);
+  Polygon();
+  Polygon(initializer_list<Point> vertex_list);
 
-    bool operator==(const Polygon &__v) const;
-    bool operator!=(const Polygon &__v) const;
+  bool operator==(const Polygon &__v) const;
+  bool operator!=(const Polygon &__v) const;
 
-    void push(Vertex point);
-    void push(TKArray<Vertex> point_list);
+  void push(Point vertex);
+  void push(TKArray<Point> vertex_list);
 
-    void connect();
-    bool containment(Vertex point);
-  };
-}
+  /// @brief 连接多边形的所有顶点，生成边数组
+  void connect();
+  /// @brief 点是否在多边形内
+  bool contain(Point point);
+};
+} // namespace tkht
 
 #endif /* polygon_hpp */

@@ -1,6 +1,6 @@
 //
 //  rectangle.hpp
-//  TKVoronoi
+//  tkgeometry
 //
 //  Created by ZhengXianda on 2022/8/25.
 //
@@ -15,24 +15,25 @@ using namespace std;
 namespace tkht {
 
 class Rectangle : public Polygon {
-    
+
 private:
-    
-    class Impl;
-    Impl *impl;
-    
+  class Impl;
+  Impl *impl;
+
 public:
-    
-    double w, h;
-    Vertex o, p;
-    
-    Rectangle(double _w, double _h);
-    Rectangle(Vertex _x, Vertex _y);
-    
-    bool contain(Vertex vertex);
-    TKArray<Vertex> crosses(Line line);
+  Point o, p;
+  double w, h;
+
+  Rectangle(Point _x, Point _y);
+  Rectangle(double _w, double _h);
+
+  /// @brief 点是否在矩形内
+  bool contain(Point point);
+
+  /// @brief 矩形与直线的交点列表
+  TKArray<Point> crosses(Line line);
 };
 
-}
+} // namespace tkht
 
 #endif /* rectangle_hpp */

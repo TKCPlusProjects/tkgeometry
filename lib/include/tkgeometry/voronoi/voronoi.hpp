@@ -1,6 +1,6 @@
 //
 //  voronoi.hpp
-//  TKVoronoi
+//  tkgeometry
 //
 //  Created by ZhengXianda on 2022/8/25.
 //
@@ -9,27 +9,26 @@
 #define voronoi_hpp
 
 #include <tkgeometry/base/line.hpp>
-#include <tkgeometry/base/triangle.hpp>
 #include <tkgeometry/base/rectangle.hpp>
+#include <tkgeometry/base/triangle.hpp>
 
 using namespace std;
 
 namespace tkht {
 
 class Voronoi {
-    
+
 private:
-    
-    class Impl;
-    Impl *impl;
-    
+  class Impl;
+  Impl *impl;
+
 public:
-    
-    TKArray<Line> line_list; //外心连线列表
-    
-    Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list);
+  /// @brief 外心连线列表
+  TKArray<Line> line_list; 
+
+  Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list);
 };
 
-}
+} // namespace tkht
 
 #endif /* voronoi_hpp */
