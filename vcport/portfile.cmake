@@ -36,9 +36,9 @@
 #  vcpkg_from_bitbucket
 #  vcpkg_from_sourceforge
 vcpkg_download_distfile(ARCHIVE
-    URLS "https://github.com/TKCPlusProjects/tkgeometry/releases/download/0.1.5/tkgeometry-0.1.5.zip"
-    FILENAME "tkgeometry-0.1.5.zip"
-    SHA512 ab44cff70e55a56fb054d5a50daffc05958ba39358debfcf1e54923d74f07773db651064427615d2895527ddd5e22d85920433ea94949e517fc3756d71f1e9a7
+    URLS "https://github.com/TKCPlusProjects/tkgeometry/releases/download/0.1.6/tkgeometry-0.1.6.zip"
+    FILENAME "tkgeometry-0.1.6.zip"
+    SHA512 36df3d9593b860cc867d418af14c0e3eed42117ca05b07dd0287194cc10cb6a487f633b6706cd509ed8a56e3a8560ef0a208201231fa80d4d88e67be2a221321
 )
 
 vcpkg_extract_source_archive_ex(
