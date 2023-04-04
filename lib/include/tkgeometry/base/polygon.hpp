@@ -29,6 +29,9 @@ namespace tkht
     Polygon();
     Polygon(initializer_list<Vertex> point_list);
 
+    bool operator==(const Polygon &__v) const;
+    bool operator!=(const Polygon &__v) const;
+
     void push(Vertex point);
     void push(TKArray<Vertex> point_list);
 

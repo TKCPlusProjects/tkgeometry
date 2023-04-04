@@ -28,8 +28,9 @@ namespace tkht
     ~FGG();
     FGG();
 
-    bool operator==(const FGG& __v) const;
-    bool operator<(const FGG& __v) const;
+    bool operator==(const FGG &__v) const;
+    bool operator!=(const FGG &__v) const;
+    bool operator<(const FGG &__v) const;
   };
 }
 

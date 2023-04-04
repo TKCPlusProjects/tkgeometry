@@ -24,6 +24,11 @@ namespace tkht
     return false;
   }
 
+  bool FGG::operator!=(const FGG &__v) const
+  {
+    return true;
+  }
+
   bool FGG::operator<(const FGG &__v) const
   {
     return true;

@@ -27,6 +27,33 @@ namespace tkht
     connect();
   }
 
+  bool Polygon::operator==(const Polygon &__v) const
+  {
+    bool equal = false;
+
+    int size = vertex_list.size();
+    int __size = __v.vertex_list.size();
+    if (size != __size)
+      return equal;
+
+    equal = true;
+    TKArray<Vertex> array = vertex_list.sorted(Vertex::les);
+    TKArray<Vertex> __array = __v.vertex_list.sorted(Vertex::les);
+    for (size_t i = 0; i < min(size, __size); i++)
+    {
+      equal &= array[i] == __array[i];
+      if (!equal)
+        break;
+    }
+
+    return equal;
+  }
+
+  bool Polygon::operator!=(const Polygon &__v) const
+  {
+    return !operator==(__v);
+  }
+
   void Polygon::push(Vertex point)
   {
     vertex_list += point;
