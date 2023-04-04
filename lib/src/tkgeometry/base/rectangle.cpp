@@ -17,24 +17,20 @@ public:
     
 };
 
-Rectangle::Rectangle(double w, double h) {
-    width = w;
-    height = h;
+Rectangle::Rectangle(double _w, double _h) : Polygon({Vertex(0, 0), Vertex(_w, 0), Vertex(_w, _h), Vertex(0, _h)}) {
+    w = _w;
+    h = _h;
     
-    o = Vertex(0, 0); 
-    p = Vertex(width, height);
-
-    Polygon({o, Vertex(width, 0), p, Vertex(0, height)});
+    o = vertex_list[0]; 
+    p = vertex_list[2];
 }
 
-Rectangle::Rectangle(Vertex x, Vertex y) {
-    TKArray<Vertex> points({x, y}, Vertex::les);
-    o = points[0]; p = points[1];
+Rectangle::Rectangle(Vertex _o, Vertex _p) : Polygon({_o, Vertex(_o.x, _p.y), _p, Vertex(_p.x, _o.y)}) {
+    o = _o; 
+    p = _p;
     
-    width = p.x - o.x;
-    height = p.y - o.y;
-
-    Polygon({o, Vertex(width, 0), p, Vertex(0, height)});
+    w = p.x - o.x;
+    h = p.y - o.y;
 }
 
 bool Rectangle::contain(Vertex vertex) {

@@ -39,10 +39,9 @@ void drawVoronoi (GLFWwindow* window, int count) {
     glColor3d(0.0f, 0.0f, 0.0f);
     glLineWidth(5.0f);
     glBegin(GL_LINE_LOOP);
-    vertex2d(0.0f, 0.0f);
-    vertex2d(canvas.width, 0.0f);
-    vertex2d(canvas.width, canvas.height);
-    vertex2d(0.0f, canvas.height);
+    for (Vertex vertex : canvas.vertex_list) {
+      vertex2d(vertex.x, vertex.y);
+    }
     glEnd();
 
     //绘制顶点

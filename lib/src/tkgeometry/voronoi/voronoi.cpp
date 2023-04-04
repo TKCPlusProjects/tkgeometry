@@ -26,18 +26,18 @@ Voronoi::Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list) {
             for (Triangle triangle : triangle_list) {
                 if (triangle == triangle_origin) continue;
                 if (triangle.contain_line(line)) {
-                    line_coterminal.push(Line(triangle_origin.circumcircle.o, triangle.circumcircle.o));
+                    line_coterminal.push(Line(triangle_origin.cc.o, triangle.cc.o));
                     break;
                 }
             }
             
             if (line_coterminal.size() > 0) {
                 line_list += line_coterminal;
-            } else if (canvas.contain(triangle_origin.circumcircle.o)) {
+            } else if (canvas.contain(triangle_origin.cc.o)) {
                 //若三角形外心在画布内，从外心向画布边缘方向做边的垂线
                 
                 //计算画布边缘 和 外心和边中点构成直线 的交点
-                TKArray<Vertex> crosses = canvas.crosses(Line(triangle_origin.circumcircle.o, line.middle()));
+                TKArray<Vertex> crosses = canvas.crosses(Line(triangle_origin.cc.o, line.middle()));
                 if (crosses.size() == 2) {
                     Vertex v1 = crosses[0];
                     Vertex v2 = crosses[1];
@@ -45,9 +45,9 @@ Voronoi::Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list) {
                     //选择交点，该交点和三角形另一顶点在边的异侧，连线外心和交点
                     TKArray<Vertex> v = triangle_origin.vertex_list - line.vertexs;
                     if (line.substitute(v.front()) * line.substitute(v1) < 0) {
-                        line_list += Line(triangle_origin.circumcircle.o, v1);
+                        line_list += Line(triangle_origin.cc.o, v1);
                     } else {
-                        line_list += Line(triangle_origin.circumcircle.o, v2);
+                        line_list += Line(triangle_origin.cc.o, v2);
                     }
                 }
             }

@@ -25,12 +25,10 @@ private:
 public:
 
     Vertex o, p, q;
-    Circle circumcircle;
+    /// @brief 外接圆
+    Circle cc;
     
-    Triangle(Vertex x, Vertex y, Vertex z);
-    
-    bool operator==(const Triangle& __v) const;
-    bool operator!=(const Triangle& __v) const;
+    Triangle(Vertex _o, Vertex _p, Vertex _q);
     
     bool contain_vertex(Vertex vertex);
     bool contain_line(Line line);

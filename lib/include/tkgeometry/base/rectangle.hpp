@@ -23,11 +23,11 @@ private:
     
 public:
     
-    double width, height;
+    double w, h;
     Vertex o, p;
     
-    Rectangle(double w, double h);
-    Rectangle(Vertex x, Vertex y);
+    Rectangle(double _w, double _h);
+    Rectangle(Vertex _x, Vertex _y);
     
     bool contain(Vertex vertex);
     TKArray<Vertex> crosses(Line line);

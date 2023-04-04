@@ -17,21 +17,12 @@ public:
     
 };
 
-Triangle::Triangle(Vertex x, Vertex y, Vertex z) {
-    TKArray<Vertex> points({x, y, z}, Vertex::les);
-    o = points[0]; p = points[1]; q = points[2];
+Triangle::Triangle(Vertex _o, Vertex _p, Vertex _q) : Polygon({_o, _p, _q}) {
+    o = _o;
+    p = _p;
+    q = _q;
 
-    circumcircle = Circle(o, p, q);
-    
-    Polygon({o, p, q});
-}
-
-bool Triangle::operator==(const Triangle& __v) const {
-    return (o == __v.o && p == __v.p && q == __v.q);
-}
-
-bool Triangle::operator!=(const Triangle& __v) const {
-    return (o != __v.o || p != __v.p || q != __v.q);
+    cc = Circle(o, p, q);
 }
 
 bool Triangle::contain_vertex(Vertex vertex) {

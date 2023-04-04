@@ -19,9 +19,9 @@ public:
 
 Delaunay::Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list) {
     //超级三角形生成
-    Triangle triangle_super = Triangle(Vertex(-(canvas.width/2.0 ), 0),
-                                       Vertex(+(canvas.width + canvas.width/2.0), 0),
-                                       Vertex(+(canvas.width/2.0), (canvas.height)*2.0));
+    Triangle triangle_super = Triangle(Vertex(-(canvas.w/2.0 ), 0),
+                                       Vertex(+(canvas.w + canvas.w/2.0), 0),
+                                       Vertex(+(canvas.w/2.0), (canvas.h)*2.0));
     triangle_list.push(triangle_super);
     
     //遍历顶点
@@ -30,7 +30,7 @@ Delaunay::Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list) {
         //记录目标三角形
         TKArray<Triangle> triangle_list_in_circle;
         for (Triangle triangle : triangle_list) {
-            if (triangle.circumcircle.contain(vertex)) {
+            if (triangle.cc.contain(vertex)) {
                 triangle_list_in_circle.push(triangle);
             }
         }
