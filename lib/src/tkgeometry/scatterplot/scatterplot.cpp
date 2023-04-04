@@ -19,12 +19,6 @@ public:
 
 };
 
-Scatterplot::~Scatterplot() = default;
-
-Scatterplot::Scatterplot() {
-    Scatterplot(Rectangle(), 0);
-}
-
 Scatterplot::Scatterplot(Rectangle canvas, int count) {
     double density_scale = sqrt(canvas.width * canvas.height / count);
     //水平分布数量和间隔

@@ -19,14 +19,10 @@ public:
     
 };
 
-Line::Line() : impl(new Line::Impl()) {
-    Line(Vertex(), Vertex());
-}
-
-Line::Line(Vertex x, Vertex y) : impl(new Line::Impl()) {
-    TKArray<Vertex> line{x, y};
-    line.sort(Vertex::les);
-    o = line[0]; p = line[1];
+Line::Line(Vertex x, Vertex y) : FGG() {
+    TKArray<Vertex> points({x, y}, Vertex::les);
+    o = points[0]; p = points[1];
+    
     vertexs.push(o);
     vertexs.push(p);
     

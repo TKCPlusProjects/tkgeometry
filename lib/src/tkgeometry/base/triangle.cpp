@@ -17,24 +17,13 @@ public:
     
 };
 
-Triangle::Triangle() : impl(new Triangle::Impl())  {
-    Triangle(Vertex(), Vertex(), Vertex());
-}
+Triangle::Triangle(Vertex x, Vertex y, Vertex z) {
+    TKArray<Vertex> points({x, y, z}, Vertex::les);
+    o = points[0]; p = points[1]; q = points[2];
 
-Triangle::Triangle(Vertex x, Vertex y, Vertex z) : impl(new Triangle::Impl()) {
-    TKArray<Vertex> line{x, y, z};
-    line.sort(Vertex::les);
-    o = line[0]; p = line[1]; q = line[2];
-    vertexs.push(o);
-    vertexs.push(p);
-    vertexs.push(q);
-    
-    op = Line(o, p);oq = Line(o, q);pq = Line(p, q);
-    lines.push(op);
-    lines.push(oq);
-    lines.push(pq);
-    
     circumcircle = Circle(o, p, q);
+    
+    Polygon({o, p, q});
 }
 
 bool Triangle::operator==(const Triangle& __v) const {
@@ -50,7 +39,7 @@ bool Triangle::contain_vertex(Vertex vertex) {
 }
 
 bool Triangle::contain_line(Line line) {
-    return lines.contain(line);
+    return side_list.contain(line);
 }
 
 bool Triangle::conjoint(Triangle triangle) {

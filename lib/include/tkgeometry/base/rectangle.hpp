@@ -8,15 +8,13 @@
 #ifndef rectangle_hpp
 #define rectangle_hpp
 
-#include <tkgeometry/base/fgg.hpp>
-#include <tkgeometry/base/vertex.hpp>
-#include <tkgeometry/base/line.hpp>
+#include <tkgeometry/base/polygon.hpp>
 
 using namespace std;
 
 namespace tkht {
 
-class Rectangle : public FGG {
+class Rectangle : public Polygon {
     
 private:
     
@@ -28,7 +26,6 @@ public:
     double width, height;
     Vertex o, p;
     
-    Rectangle();
     Rectangle(double w, double h);
     Rectangle(Vertex x, Vertex y);
     

@@ -20,13 +20,12 @@ public:
     
 };
 
-Vertex::Vertex() : impl(new Vertex::Impl()) {
-    Vertex(0, 0);
+Vertex::Vertex() : FGG(), x(0), y(0) {
+    
 }
 
-Vertex::Vertex(double x, double y) : impl(new Vertex::Impl()) {
-    this->x = x;
-    this->y = y;
+Vertex::Vertex(double x, double y) : FGG(), x(x), y(y) {
+
 }
 
 bool Vertex::operator==(const Vertex& __v) const {

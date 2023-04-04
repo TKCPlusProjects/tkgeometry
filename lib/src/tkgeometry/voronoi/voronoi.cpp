@@ -17,16 +17,10 @@ public:
     
 };
 
-Voronoi::~Voronoi() = default;
-
-Voronoi::Voronoi() {
-    Voronoi(Rectangle(), {});
-}
-
 Voronoi::Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list) {
     //寻找外心连接线
     for (Triangle triangle_origin : triangle_list) {
-        for (Line line : triangle_origin.lines) {
+        for (Line line : triangle_origin.side_list) {
             //选择三角形的一边，寻找共边三角形
             TKArray<Line> line_coterminal;
             for (Triangle triangle : triangle_list) {
@@ -49,7 +43,7 @@ Voronoi::Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list) {
                     Vertex v2 = crosses[1];
                     
                     //选择交点，该交点和三角形另一顶点在边的异侧，连线外心和交点
-                    TKArray<Vertex> v = triangle_origin.vertexs - line.vertexs;
+                    TKArray<Vertex> v = triangle_origin.vertex_list - line.vertexs;
                     if (line.substitute(v.front()) * line.substitute(v1) < 0) {
                         line_list += Line(triangle_origin.circumcircle.o, v1);
                     } else {

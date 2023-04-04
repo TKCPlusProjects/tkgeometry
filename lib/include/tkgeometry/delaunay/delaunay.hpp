@@ -28,8 +28,6 @@ public:
     
     TKArray<Triangle> triangle_list; //三角形列表
     
-    ~Delaunay();
-    Delaunay();
     Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list);
 };
 

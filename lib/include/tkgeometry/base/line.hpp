@@ -29,7 +29,6 @@ public:
     
     double a, b, c; // 函数式：ax + by + c = 0;
     
-    Line();
     Line(Vertex x, Vertex y);
     
     bool operator==(const Line& __v) const;

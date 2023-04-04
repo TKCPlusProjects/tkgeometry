@@ -17,16 +17,16 @@ public:
     
 };
 
-Circle::Circle() : impl(new Circle::Impl()) {
+Circle::Circle() : FGG() {
     Circle(Vertex(), 0);
 }
 
-Circle::Circle(Vertex o, double r) : impl(new Circle::Impl()) {
+Circle::Circle(Vertex o, double r) : FGG() {
     this->o = o;
     this->r = r;
 }
 
-Circle::Circle(Vertex left, Vertex mid, Vertex right) : impl(new Circle::Impl()) {
+Circle::Circle(Vertex left, Vertex mid, Vertex right) : FGG() {
     double m = (mid.x * mid.x + mid.y * mid.y) - (left.x*left.x + left.y * left.y);
     double u = (right.x * right.x + right.y *right.y) - (left.x*left.x + left.y * left.y);
     double s = 0.5 / ((mid.x - left.x) * (right.y - left.y) - (mid.y - left.y) * (right.x - left.x));

@@ -17,25 +17,24 @@ public:
     
 };
 
-Rectangle::Rectangle() : impl(new Rectangle::Impl()) {
-    Rectangle(Vertex(), Vertex());
-}
-
-Rectangle::Rectangle(double w, double h) : impl(new Rectangle::Impl()) {
+Rectangle::Rectangle(double w, double h) {
     width = w;
     height = h;
     
-    o = Vertex(0, 0);
-    p = Vertex(w, h);
+    o = Vertex(0, 0); 
+    p = Vertex(width, height);
+
+    Polygon({o, Vertex(width, 0), p, Vertex(0, height)});
 }
 
-Rectangle::Rectangle(Vertex x, Vertex y) : impl(new Rectangle::Impl()) {
-    TKArray<Vertex> line{x, y};
-    line.sort(Vertex::les);
-    o = line[0]; p = line[1];
+Rectangle::Rectangle(Vertex x, Vertex y) {
+    TKArray<Vertex> points({x, y}, Vertex::les);
+    o = points[0]; p = points[1];
     
     width = p.x - o.x;
     height = p.y - o.y;
+
+    Polygon({o, Vertex(width, 0), p, Vertex(0, height)});
 }
 
 bool Rectangle::contain(Vertex vertex) {

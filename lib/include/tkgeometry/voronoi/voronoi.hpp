@@ -27,8 +27,6 @@ public:
     
     TKArray<Line> line_list; //外心连线列表
     
-    ~Voronoi();
-    Voronoi();
     Voronoi(Rectangle canvas, TKArray<Triangle> triangle_list);
 };
 

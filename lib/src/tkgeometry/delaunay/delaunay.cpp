@@ -17,12 +17,6 @@ public:
     
 };
 
-Delaunay::~Delaunay() = default;
-
-Delaunay::Delaunay() {
-    Delaunay(Rectangle(), {});
-}
-
 Delaunay::Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list) {
     //超级三角形生成
     Triangle triangle_super = Triangle(Vertex(-(canvas.width/2.0 ), 0),
@@ -46,7 +40,7 @@ Delaunay::Delaunay(Rectangle canvas, TKArray<Vertex> vertex_list) {
         //保留目标三角形的非重复边
         TKArray<Line> line_list;
         for (Triangle triangle : triangle_list_in_circle) {
-            for (Line line : triangle.lines) {
+            for (Line line : triangle.side_list) {
                 line_list.push_diff(line);
             }
         }

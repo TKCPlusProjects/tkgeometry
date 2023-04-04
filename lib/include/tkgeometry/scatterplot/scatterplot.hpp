@@ -25,8 +25,6 @@ public:
     
     TKArray<Vertex> vertex_list; //顶点列表
 
-    ~Scatterplot();
-    Scatterplot();
     Scatterplot(Rectangle canvas, int count);
 };
 
