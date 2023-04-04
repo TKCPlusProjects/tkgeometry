@@ -26,10 +26,13 @@ namespace tkht
     TKArray<Vertex> vertex_list;
     TKArray<Line> side_list;
 
-    Polygon(TKArray<Vertex> point_list);
+    Polygon();
+    Polygon(initializer_list<Vertex> point_list);
 
-    void init(TKArray<Vertex> point_list);
+    void push(Vertex point);
+    void push(TKArray<Vertex> point_list);
 
+    void connect();
     bool containment(Vertex point);
   };
 }

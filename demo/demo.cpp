@@ -91,13 +91,12 @@ void drawPolygon (GLFWwindow* window) {
     height = _height;
 
     //计算数据
-    TKArray<Vertex> vertex_list {
+    Polygon polygon {
       Vertex(0.0f, 0.0f),
       Vertex(width - 2*margin, 0.0f),
       Vertex(width - 2*margin, height - 2*margin),
       Vertex(0.0f, height - 2*margin),
     };
-    Polygon polygon = Polygon(vertex_list);
 
     //清空窗口
     glClear(GL_COLOR_BUFFER_BIT);
