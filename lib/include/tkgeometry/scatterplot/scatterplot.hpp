@@ -24,7 +24,7 @@ public:
   /// @brief 顶点列表
   TKArray<Point> vertex_list;
 
-  Scatterplot(Rectangle canvas, int count);
+  Scatterplot(Rectangle canvas, double density);
 };
 
 } // namespace tkht

@@ -16,7 +16,7 @@ void vertex2d(GLdouble x, GLdouble y) {
              (y + margin) / height * 2.0f - 1.0f);
 }
 
-void drawVoronoi(GLFWwindow *window, int count) {
+void drawVoronoi(GLFWwindow *window, double density) {
   int _width;
   int _height;
   glfwGetWindowSize(window, &_width, &_height);
@@ -29,7 +29,7 @@ void drawVoronoi(GLFWwindow *window, int count) {
 
     // 计算数据
     Rectangle canvas = Rectangle(width - 2 * margin, height - 2 * margin);
-    Scatterplot scatterplot = Scatterplot(canvas, count);
+    Scatterplot scatterplot = Scatterplot(canvas, density);
     Delaunay delaunay = Delaunay(canvas, scatterplot.vertex_list);
     Voronoi voronoi = Voronoi(canvas, delaunay.triangle_list);
 

@@ -26,8 +26,8 @@ Polygon::Polygon(initializer_list<Point> point_list)
 bool Polygon::operator==(const Polygon &__v) const {
   bool equal = false;
 
-  int size = vertex_list.size();
-  int __size = __v.vertex_list.size();
+  size_t size = vertex_list.size();
+  size_t __size = __v.vertex_list.size();
   if (size != __size)
     return equal;
 
@@ -51,8 +51,8 @@ void Polygon::push(TKArray<Point> vertex_list) { vertex_list += vertex_list; }
 
 void Polygon::connect() {
   side_list.clear();
-  int vertex_count = vertex_list.size();
-  for (int i = 0, j = vertex_count - 1; i < vertex_count; j = i++) {
+  size_t size = vertex_list.size();
+  for (size_t i = 0, j = size - 1; i < size; j = i++) {
     Line side = Line(vertex_list[i], vertex_list[j]);
     side_list.push(side);
   }
