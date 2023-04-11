@@ -3,6 +3,9 @@ cmake_minimum_required (VERSION 3.5)
 
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
 
+set(CMAKE_BUILD_TYPE "Release")
+set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE TRUE)
+
 # 配置项目信息
 project(
   tkgeometry # 项目名，会被保存到 PROJECT_NAME 变量
